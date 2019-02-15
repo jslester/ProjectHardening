@@ -10,13 +10,25 @@
         /**
          * Doctype function
          */
+
         function doctype()
         {
             if ( !property_exists( 'qa_html_theme_base', 'isRTL' ) ) {
                 /*Fall back for the version 1.6.3*/
                 $this->isRTL = isset( $this->content['direction'] ) && $this->content['direction'] === 'rtl';
-            }
+		$this->content['script'] = isset($this->content['script']) ? $this->content['script'] : array(); 
+    $this->content['script'][] = ' 
+        <style type="text/css"> 
+            .navbar-default, 
+            .navbar-default .navbar-nav>.active>a, 
+            .navbar-default .navbar-nav>.active>a:hover, 
+            .navbar-default .navbar-nav>.active>a:focus { 
+                background-color: red; 
+            } 
+        </style> 
+    '; 	   
 
+	    }
             parent::doctype();
         }
 
@@ -192,7 +204,7 @@
             $this->donut_resources( $js_paths, 'js' );
 
         }
-
+        
         function body_content()
         {
             $sub_navigation = @$this->content['navigation']['sub'];
@@ -540,8 +552,10 @@
                                 <span class="glyphicon glyphicon-menu-hamburger"></span>
                             </button>
                         </div>
-                        <div class="col-sm-3 col-xs-8 logo-wrapper">
-                            <?php $this->logo(); ?>
+			<div class="col-sm-3 col-xs-8 logo-wrapper">
+				<a href="index.php">
+			    		<img src="/qa-theme/Donut-theme/images/logo.png">
+				</a>
                         </div>
                         <div class="donut-navigation col-sm-2 col-xs-3 pull-right">
                             <?php $this->donut_user_drop_down(); ?>
