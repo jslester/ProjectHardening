@@ -19,7 +19,7 @@ cd "C:\Program Files (x86)\Malwarebytes' Anti-Malware"
 Write-Host "Waiting"
 Start-Sleep -Seconds 2
 Write-Host "Registering"
-.\mbamapi.exe /register 1TE95-O74AJ WL8T-76T1-2A5H-59R8
+.\mbamapi.exe /register #ADD ID AND KEY SYNTAX: <ID> <KEY>
 
 #Start-Sleep -Seconds 3
 Write-Host "Hide Registration Details"
