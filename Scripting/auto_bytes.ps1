@@ -1,5 +1,5 @@
 ﻿### Variables ###
-$transloc = "C:\Users\Robert\Documents\Winter2019\CSC405\Capstone\Script\testing\installer"
+$transloc = "" # ADD LOCATION OF "installer" folder
 $destloc = "C:\Testing"
 $malInstLoc = "C:\Program Files (x86)\Malwarebytes' Anti-Malware" 
 $DEBUG = $false
