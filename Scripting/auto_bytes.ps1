@@ -1,23 +1,32 @@
 ﻿### Variables ###
-$transloc = "" # ADD LOCATION OF "installer" folder
+$transloc = "C:\Users\Robert\Documents\GitHub\ProjectHardening\Scripting\installer" # ADD LOCATION OF "installer" folder
 $destloc = "C:\Testing"
-$malInstLoc = "C:\Program Files (x86)\Malwarebytes' Anti-Malware" 
-$DEBUG = $false
+$usr = 'robert' #add remote user name
+$passwd = convertto-securestring -AsPlainText -Force -String 'thisisapassword' #insert password of remote user
+$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $usr,$passwd
+$compname = "DESKTOP-SN8H7KP" 
+
  
 # requires the computer name license ID and license key to be passed in
-param(
-[Parameter(Mandatory=$true)][string]$compname,
-[Parameter(Mandatory=$true)][string]$liscID,
-[Parameter(Mandatory=$true)][string]$liscKey
-)
+#param (
+#[Parameter(Mandatory=$true)][string]$compname,
+#[Parameter(Mandatory=$true)][string]$liscID,
+#[Parameter(Mandatory=$true)][string]$liscKey
+#)
 
-$session = New-PSSession -ComputerName $compname
+$session = New-PSSession -ComputerName $compname -Credential $cred
 
 # Move the installer file from the "server" to the "machine" that needs to be scanned
 # creates a new folder in the C: for usage
 Copy-Item $transloc -Destination $destloc -Recurse -ToSession $session
 
 Invoke-Command -Session $session -ScriptBlock{
+    $destloc = "C:\Testing"
+    $malInstLoc = "C:\Program Files (x86)\Malwarebytes' Anti-Malware"
+    $liscID = "1TE95-O74AJ"
+    $liscKey = "WL8T-76T1-2A5H-59R8"
+    $DEBUG = $true
+
 	# go to the directory where the installer is
 	cd $destloc
 
@@ -51,7 +60,7 @@ Invoke-Command -Session $session -ScriptBlock{
 
 	#Run scan
 	IF($DEBUG) {Write-Host "Starting Scan"}
-	.\mbamapi.exe /scan -quick -log -silent -remove
+	#.\mbamapi.exe /scan -quick -log -silent -remove
 
 	#Uninstall 
 	IF($DEBUG) {Write-Host "Uninstalling"}

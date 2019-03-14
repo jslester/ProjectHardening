@@ -1,0 +1,14 @@
+- Transfer log files back to the ticket
+- Delete remaining files
+- Add support for passing in AD credentials
+- add blocking/waiting for the installer
+	~ check that the install happened
+	~ needs to happen as soon as the ticket is generated
+- point to correct locations (since the executables and the script will live in different places)
+- delay or remove force reboot
+- documentation for each step of the process
+- NEW INSTALLER
+- change the language of files/folders generated
+- transfer to TEMP folder on the target machine 	
+
+ 
