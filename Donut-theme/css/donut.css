@@ -1752,7 +1752,7 @@ header#nav-header {
   background-size: cover;
   background-attachment: fixed;
   height: 100%;
-  opacity: 0.1;
+  opacity: 0.3;
   position: absolute;
   width: 100%;
   z-index: 2;
@@ -1789,7 +1789,6 @@ header#nav-header {
 .site-header .search-bar {
   padding: 10px 5px;
   margin: auto;
-  background-color: #2e6da4;
 }
 @media (min-width: 300px) {
   .site-header .search-bar .form-inline .form-group {

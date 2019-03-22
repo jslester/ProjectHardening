@@ -11,7 +11,7 @@
                 </div>
             <?php endif ?>
 
-            <h1 class="top-heading"><?php echo qa_opt( 'donut_banner_head_text' ) ?></h1>
+            <h1 class="top-heading">Murphy USA Q&A Site</h1>
 
             <?php if ( qa_opt( 'donut_banner_div1_text' ) or qa_opt( 'donut_banner_div2_text' ) or qa_opt( 'donut_banner_div2_text' ) or qa_opt( 'donut_banner_div1_icon' ) or qa_opt( 'donut_banner_div2_icon' ) or qa_opt( 'donut_banner_div3_icon' ) ): ?>
                 <div class="container visible-md visible-lg">
@@ -62,8 +62,6 @@
                     </div>
                 <?php endif ?>
 
-                <!--IF you are using the default vector , you should not remove the attribution for freepik.com-->
-                <div class="col-lg-12 visible-lg text-right small">vector designed by Freepik.com</div>
             </div>
         </div>
     </div>
