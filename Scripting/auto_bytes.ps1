@@ -1,23 +1,26 @@
 ﻿### Variables ###
-$transloc = "C:\Users\Robert\Documents\GitHub\ProjectHardening\Scripting\installer" # ADD LOCATION OF "installer" folder
-$destloc = "C:\Testing"
-$usr = 'robert' #add remote user name
-$passwd = convertto-securestring -AsPlainText -Force -String 'thisisapassword' #insert password of remote user
-$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $usr,$passwd
-$compname = "DESKTOP-SN8H7KP" 
+$trfloc = "C:\Users\Robert\Documents\GitHub\ProjectHardening\Scripting\installer" # ADD LOCATION OF "installer" folder
+$destloc = "C:\Windows\Temp\autobytes" # where the files should be transferred to
+
+#$usr = '' #add remote user name, use this line for hardcoding
+#$passwd = convertto-securestring -AsPlainText -Force -String ' ' #insert password of remote user, use this line for hardcoding
+#$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $usr,$passwd
+#$compname = " " #use this line for hardcoding computer name
 
  
 # requires the computer name license ID and license key to be passed in
-#param (
-#[Parameter(Mandatory=$true)][string]$compname,
-#[Parameter(Mandatory=$true)][string]$liscID,
-#[Parameter(Mandatory=$true)][string]$liscKey
-#)
+param (
+[Parameter(Mandatory=$true)][string]$compname,
+[Parameter(Mandatory=$true)][string]$liscID,
+[Parameter(Mandatory=$true)][string]$liscKey
+)
 
-$session = New-PSSession -ComputerName $compname -Credential $cred
+#when hardcoding passwords and usernames, uncomment the -Credential option
+$session = New-PSSession -ComputerName $compname # -Credential $cred 
 
 # Move the installer file from the "server" to the "machine" that needs to be scanned
 # creates a new folder in the C: for usage
+
 Copy-Item $transloc -Destination $destloc -Recurse -ToSession $session
 
 Invoke-Command -Session $session -ScriptBlock{
@@ -71,5 +74,5 @@ Invoke-Command -Session $session -ScriptBlock{
 	cd $destloc
 
 	#This program cleans up the programs and performs reboot
-	.\mbstcmd.exe /y /cleanup
+	.\mbstcmd.exe /y /cleanup /noreboot
 }
