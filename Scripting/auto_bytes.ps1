@@ -1,11 +1,16 @@
 ﻿### Variables ###
 $trfloc = "C:\Users\Robert\Documents\GitHub\ProjectHardening\Scripting\installer" # ADD LOCATION OF "installer" folder
 $destloc = "C:\Windows\Temp\autobytes" # where the files should be transferred to
+$liscID = "1TE95-O74AJ"
+$liscKey = "WL8T-76T1-2A5H-59R8"
 
-#$usr = '' #add remote user name, use this line for hardcoding
-#$passwd = convertto-securestring -AsPlainText -Force -String ' ' #insert password of remote user, use this line for hardcoding
-#$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $usr,$passwd
-#$compname = " " #use this line for hardcoding computer name
+### Variables for testing ###
+<#
+$usr = '' #add remote user name, use this line for hardcoding
+$passwd = convertto-securestring -AsPlainText -Force -String ' ' #insert password of remote user, use this line for hardcoding
+$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $usr,$passwd
+$compname = " " #use this line for hardcoding computer name 
+#>
 
  
 # requires the computer name license ID and license key to be passed in
@@ -19,19 +24,16 @@ param (
 $session = New-PSSession -ComputerName $compname # -Credential $cred 
 
 # Move the installer file from the "server" to the "machine" that needs to be scanned
-# creates a new folder in the C: for usage
+# creates a new folder in the C:\Windows\Temp for usage
 
 Copy-Item $transloc -Destination $destloc -Recurse -ToSession $session
 
 Invoke-Command -Session $session -ScriptBlock{
-    $destloc = "C:\Testing"
     $malInstLoc = "C:\Program Files (x86)\Malwarebytes' Anti-Malware"
-    $liscID = "1TE95-O74AJ"
-    $liscKey = "WL8T-76T1-2A5H-59R8"
     $DEBUG = $true
 
 	# go to the directory where the installer is
-	cd $destloc
+	cd $Using:destloc
 
 	# run the installer with options:
 	# 1. being able to cancel
@@ -47,7 +49,7 @@ Invoke-Command -Session $session -ScriptBlock{
 	IF($DEBUG) {Write-Host "Waiting"}
 	Start-Sleep -Seconds 2
 	IF($DEBUG) {Write-Host "Registering"}
-	.\mbamapi.exe /register $liscID $liscKEY #ADD ID AND KEY SYNTAX: <ID> <KEY>
+	.\mbamapi.exe /register $Using:liscID $Using:liscKEY #ADD ID AND KEY SYNTAX: <ID> <KEY>
 
 	Start-Sleep -Seconds 2
 	IF($DEBUG) {Write-Host "Hide Registration Details"}
@@ -59,11 +61,11 @@ Invoke-Command -Session $session -ScriptBlock{
 
 	Start-Sleep -Seconds 2
 	IF($DEBUG) {Write-Host "Changing Log File Location"}
-	.\mbamapi.exe /logtofolder $destloc
+	.\mbamapi.exe /logtofolder $Using:destloc
 
 	#Run scan
 	IF($DEBUG) {Write-Host "Starting Scan"}
-	#.\mbamapi.exe /scan -quick -log -silent -remove
+	.\mbamapi.exe /scan -quick -log -silent -remove
 
 	#Uninstall 
 	IF($DEBUG) {Write-Host "Uninstalling"}
@@ -71,7 +73,7 @@ Invoke-Command -Session $session -ScriptBlock{
 	Write-Host "Uninstall Complete"
 
 	#Move to cleanup directory
-	cd $destloc
+	cd $Using:destloc
 
 	#This program cleans up the programs and performs reboot
 	.\mbstcmd.exe /y /cleanup /noreboot
