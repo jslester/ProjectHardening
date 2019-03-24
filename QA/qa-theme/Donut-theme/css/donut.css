@@ -1789,7 +1789,6 @@ header#nav-header {
 .site-header .search-bar {
   padding: 10px 5px;
   margin: auto;
-  background-color: #2e6da4;
 }
 @media (min-width: 300px) {
   .site-header .search-bar .form-inline .form-group {
