@@ -1357,9 +1357,7 @@
         private function donut_attribution()
         {
             $this->output(
-                    '<div class="qa-attribution">',
-                    '<a href="https://github.com/amiyasahu/Donut">Donut Theme</a> <span class="fa fa-code"></span> with <span class="fa fa-heart"></span> by <a href="http://amiyasahu.github.io">Amiya Sahu</a>',
-                    '</div>'
+                   '<div></div>'
             );
         }
 
