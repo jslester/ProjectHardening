@@ -32,6 +32,8 @@ Invoke-Command -Session $session -ScriptBlock{
     $malInstLoc = "C:\Program Files (x86)\Malwarebytes' Anti-Malware"
     $DEBUG = $true
 
+    New-Item -Path "C:\Windows\Temp\autobytes" -Name "logfiles" -ItemType "directory"
+
 	# go to the directory where the installer is
 	cd $Using:destloc
 
@@ -41,7 +43,7 @@ Invoke-Command -Session $session -ScriptBlock{
 	# 3. all background installation
 	# 4. default options instead of message boxes 
 	IF($DEBUG) {Write-Host "Installing MalwareBytes"}
-	.\mbam-setup-1.80.2.1012.exe /nocancel /norestart /verysilent /suppressmsgboxes /log="C:\Testing\install_log.txt"
+	.\mbam-setup-1.80.2.1012.exe /nocancel /norestart /verysilent /suppressmsgboxes /log="C:\Windows\Temp\autobytes\install_log.txt"
 
 	Start-Sleep -Seconds 10
 	cd $malInstLoc
@@ -77,4 +79,6 @@ Invoke-Command -Session $session -ScriptBlock{
 
 	#This program cleans up the programs and performs reboot
 	.\mbstcmd.exe /y /cleanup /noreboot
+
+    Copy-Item 
 }
