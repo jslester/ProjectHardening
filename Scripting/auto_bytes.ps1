@@ -24,8 +24,10 @@ $session = New-PSSession -ComputerName $compname # -Credential $cred
 
 # Move the installer file from the "server" to the "machine" that needs to be scanned
 # creates a new folder in the C:\Windows\Temp for usage
-
-Copy-Item $trfloc -Destination $destloc -Recurse -ToSession $session
+if(Test-Path "\\$compname\$c\Windows\Temp\autobytes")
+    {Remove-Item -Path "\\$compname\$c\Windows\Temp\autobytes" -Recurse -Force} 
+else 
+    {Copy-Item $trfloc -Destination $destloc -Recurse -ToSession $session}
 
 Invoke-Command -Session $session -ScriptBlock{
     $malInstLoc = "C:\Program Files (x86)\Malwarebytes' Anti-Malware"
@@ -81,5 +83,8 @@ Invoke-Command -Session $session -ScriptBlock{
 
     Copy-Item "C:\Windows\Temp\autobytes\logfiles\" -Destination $Using:serverlogloc -Recurse -FromSession  $Using:session
 
+    if
     Remove-Item -Path "C:\Windows\Temp\autobytes\" -Recurse -Force
+
+
 }
