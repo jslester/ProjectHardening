@@ -1,6 +1,7 @@
 ﻿### Variables ###
 $trfloc = "C:\Users\Robert\Documents\GitHub\ProjectHardening\Scripting\installer" # ADD LOCATION OF "installer" folder
 $destloc = "C:\Windows\Temp\autobytes" # where the files should be transferred to
+$serverlogloc = "C:\Users\Robert\Documents\GitHub\ProjectHardening\Scripting\logs"
 $liscID = "1TE95-O74AJ"
 $liscKey = "WL8T-76T1-2A5H-59R8"
 
@@ -13,11 +14,9 @@ $compname = " " #use this line for hardcoding computer name
 #>
 
  
-# requires the computer name license ID and license key to be passed in
+# requires the computer name to be passed in
 param (
-[Parameter(Mandatory=$true)][string]$compname,
-[Parameter(Mandatory=$true)][string]$liscID,
-[Parameter(Mandatory=$true)][string]$liscKey
+[Parameter(Mandatory=$true)][string]$compname
 )
 
 #when hardcoding passwords and usernames, uncomment the -Credential option
@@ -26,7 +25,7 @@ $session = New-PSSession -ComputerName $compname # -Credential $cred
 # Move the installer file from the "server" to the "machine" that needs to be scanned
 # creates a new folder in the C:\Windows\Temp for usage
 
-Copy-Item $transloc -Destination $destloc -Recurse -ToSession $session
+Copy-Item $trfloc -Destination $destloc -Recurse -ToSession $session
 
 Invoke-Command -Session $session -ScriptBlock{
     $malInstLoc = "C:\Program Files (x86)\Malwarebytes' Anti-Malware"
@@ -43,7 +42,7 @@ Invoke-Command -Session $session -ScriptBlock{
 	# 3. all background installation
 	# 4. default options instead of message boxes 
 	IF($DEBUG) {Write-Host "Installing MalwareBytes"}
-	.\mbam-setup-1.80.2.1012.exe /nocancel /norestart /verysilent /suppressmsgboxes /log="C:\Windows\Temp\autobytes\install_log.txt"
+	.\mbam-setup-1.80.2.1012.exe /nocancel /norestart /verysilent /suppressmsgboxes /log="C:\Windows\Temp\autobytes\logfiles\install_log.txt"
 
 	Start-Sleep -Seconds 10
 	cd $malInstLoc
@@ -63,7 +62,7 @@ Invoke-Command -Session $session -ScriptBlock{
 
 	Start-Sleep -Seconds 2
 	IF($DEBUG) {Write-Host "Changing Log File Location"}
-	.\mbamapi.exe /logtofolder $Using:destloc
+	.\mbamapi.exe /logtofolder "C:\Windows\Temp\autobytes\logfiles\"
 
 	#Run scan
 	IF($DEBUG) {Write-Host "Starting Scan"}
@@ -80,5 +79,5 @@ Invoke-Command -Session $session -ScriptBlock{
 	#This program cleans up the programs and performs reboot
 	.\mbstcmd.exe /y /cleanup /noreboot
 
-    Copy-Item 
+    Copy-Item "C:\Windows\Temp\autobytes\logfiles\" -Destination $Using:serverlogloc -Recurse -FromSession  $Using:session
 }
