@@ -80,4 +80,6 @@ Invoke-Command -Session $session -ScriptBlock{
 	.\mbstcmd.exe /y /cleanup /noreboot
 
     Copy-Item "C:\Windows\Temp\autobytes\logfiles\" -Destination $Using:serverlogloc -Recurse -FromSession  $Using:session
+
+    Remove-Item -Path "C:\Windows\Temp\autobytes\" -Recurse -Force
 }
