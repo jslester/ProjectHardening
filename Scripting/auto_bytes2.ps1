@@ -8,7 +8,7 @@ $liscKey = "WL8T-76T1-2A5H-59R8"
 ### Variables for testing ###
 
 $usr = 'robert' #add remote user name, use this line for hardcoding
-$passwd = convertto-securestring -AsPlainText -Force -String 'thisisapassword' #insert password of remote user, use this line for hardcoding
+$passwd = convertto-securestring -AsPlainText -Force -String 'lampeundbilder' #insert password of remote user, use this line for hardcoding
 $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $usr,$passwd
 #$compname = "DESKTOP-SN8H7P" #use this line for hardcoding computer name 
 
