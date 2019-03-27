@@ -1,7 +1,7 @@
 ﻿### Variables ###
-$trfloc = "C:\Users\Robert\Documents\GitHub\ProjectHardening\Scripting\installer" # ADD LOCATION OF "installer" folder
+$trfloc = "C:\Users\Robert\Documents\installer" # ADD LOCATION OF "installer" folder
 $destloc = "C:\Windows\Temp\autobytes" # where the files should be transferred to
-$serverlogloc = "C:\Users\Robert\Documents\GitHub\ProjectHardening\Scripting\logs"
+$serverlogloc = "C:\Users\Robert\Documents\logs"
 $liscID = "1TE95-O74AJ"
 $liscKey = "WL8T-76T1-2A5H-59R8"
 
