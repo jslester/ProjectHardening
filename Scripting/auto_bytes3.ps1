@@ -2,8 +2,8 @@
 $trfloc = "C:\Users\Robert\Documents\installer" # ADD LOCATION OF "installer" folder
 $destloc = "C:\Windows\Temp\autobytes\installer" # where the files should be transferred to
 $serverlogloc = "C:\Users\Robert\Documents\logs"
-$liscID = "1TE95-O74AJ"
-$liscKey = "WL8T-76T1-2A5H-59R8" 
+$liscID = ""
+$liscKey = "" 
 
 # Move the installer file from the "server" to the "machine" that needs to be scanned
 # creates a new folder in the C:\Windows\Temp for usage
