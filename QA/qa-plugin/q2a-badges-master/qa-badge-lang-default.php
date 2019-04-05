@@ -10,13 +10,13 @@
 		'popular_question'=>'Popular Question',
 		'famous_question'=>'Famous Question',
 
-		'nice_answer'=>'Nice Answer',
-		'good_answer'=>'Good Answer',
-		'great_answer'=>'Great Answer',
+		'nice_answer'=>'Diesel',
+		'good_answer'=>'Winterized Diesel',
+		'great_answer'=>'Biodiesel',
 
-		'nice_answer_old'=>'Renewal',
-		'good_answer_old'=>'Revival',
-		'great_answer_old'=>'Resurrection',
+		'nice_answer_old'=>'Petroleum Seep',
+		'good_answer_old'=>'Oil Well',
+		'great_answer_old'=>'Oil Field',
 
 
 		'gifted'=>'Gifted',
@@ -27,37 +27,37 @@
 		'respectful'=>'Respectful',
 		'reverential'=>'Reverential',
 						
-		'liked'=>'Liked',
-		'loved'=>'Loved',
-		'revered'=>'Revered',
+		'liked'=>'Pump',
+		'loved'=>'Station',
+		'revered'=>'Distributor',
 	
-		'asker'=>'Asker',
-		'questioner'=>'Questioner',
-		'inquisitor'=>'Inquisitor',
+		'asker'=>'Curious',
+		'questioner'=>'Engaged',
+		'inquisitor'=>'Inspired',
 
-		'answerer'=>'Answerer',
-		'lecturer'=>'Lecturer',
-		'preacher'=>'Preacher',
+		'answerer'=>'Ambitious',
+		'lecturer'=>'Motivated',
+		'preacher'=>'Spirited',
 
 		'commenter'=>'Commenter',
 		'commentator'=>'Commentator',
 		'annotator'=>'Annotator',
 					
-		'voter'=>'Voter',
-		'avid_voter'=>'Avid Voter',
-		'devoted_voter'=>'Devoted Voter',
+		'voter'=>'Separator',
+		'avid_voter'=>'Converter',
+		'devoted_voter'=>'Refiner',
 
 		'editor'=>'Editor',
 		'copy_editor'=>'Copy Editor',
 		'senior_editor'=>'Senior Editor',
 		
-		'watchdog'=>'Watchdog',
-		'bloodhound'=>'Bloodhound',
-		'pitbull'=>'Pitbull',
+		'watchdog'=>'Morality',
+		'bloodhound'=>'Professionalism',
+		'pitbull'=>'Integrity',
 
-		'reader'=>'Reader',
-		'avid_reader'=>'Avid Reader',
-		'devoted_reader'=>'Devoted Reader',
+		'reader'=>'Eager',
+		'avid_reader'=>'Excited',
+		'devoted_reader'=>'Pumped',
 		
 
 		'dedicated'=>'Dedicated',
@@ -78,12 +78,12 @@
 		'1000_club'=>'1,000 Club',
 		'10000_club'=>'10,000 Club',
 		
-		'medalist'=>'Medalist',
-		'champion'=>'Champion',
-		'olympian'=>'Olympian',
+		'medalist'=>'Trek',
+		'champion'=>'Journey',
+		'olympian'=>'The Extra Mile',
 
 		'verified'=>'Verified Human',
-		'profiler'=>'Autobiographer',
+		'profiler'=>'Citizen',
 		'avatar'=>'Photogenic',
 		
 	
@@ -173,9 +173,9 @@
 
 
 		
-		'bronze'=>'Bronze',
-		'silver'=>'Silver',
-		'gold'=>'Gold',
+		'bronze'=>'Unleaded',
+		'silver'=>'Plus',
+		'gold'=>'Premium',
 
 		'bronze_desc'=>'Bronze badges are awarded for participation on a basic level. They are relatively easy to earn if you participate.',
 		'silver_desc'=>'Silver badges are awarded for extended participation. They are an accomplishment, and a sign of genuine participation.',
