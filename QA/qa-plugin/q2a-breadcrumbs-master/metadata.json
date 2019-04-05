@@ -1,0 +1,10 @@
+{
+  "name": "Q2A Breadcrumbs",
+  "description": "Provides a basic widget for displaying breadcrumbs",
+  "version": "1.5.2",
+  "date": "2016-03-01",
+  "author": "Team Forge",
+  "license": "GPLv2",
+  "min_q2a": "1.6",
+  "min_php": "5.1.6"
+}
