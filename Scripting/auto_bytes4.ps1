@@ -51,7 +51,6 @@ IF($DEBUG) {Write-Host "Changing Log File Location"}
 
 #Run scan
 IF($DEBUG) {Write-Host "Starting Scan"}
-$date = Get-Date -Format "yyyy-MM-dd (hh-mm-ss)"
 .\mbamapi.exe /scan -quick -log /xml -silent -remove
 
 cd "C:\Windows\Temp\autobytes\logfiles"
@@ -123,8 +122,6 @@ cd $destloc
 
 #This program cleans up the programs and performs reboot
 .\mbstcmd.exe /y /cleanup /noreboot
-
-#Copy-Item "C:\Windows\Temp\autobytes\logfiles\" -Destination $serverlogloc -Recurse
 
 cd "C:\Windows\Temp"
 
