@@ -91,7 +91,7 @@ Found 0 threats. The XML log of the scan is attached, and the log of the install
     $Body =
 "Malwarebytes Second Opinion Scan Comple.
 
-Found 1 or more threats. The XML log of the scan is attached, and the log of the installation of Malwarebytes is also attached."
+Found 1 or more threats and removed. The XML log of the scan is attached, and the log of the installation of Malwarebytes is also attached."
 }
 
 $EmailFrom = "blah@gmail.com"
@@ -99,7 +99,7 @@ $EmailTo = "blah@gmail.com"
 $SMTPServer = "smtp.gmail.com" 
 $SMTPClient = New-Object Net.Mail.SmtpClient($SmtpServer, 587) 
 $SMTPClient.EnableSsl = $true 
-$SMTPClient.Credentials = New-Object System.Net.NetworkCredential("username", "password"); 
+$SMTPClient.Credentials = New-Object System.Net.NetworkCredential("username", "password");
 $emailMessage = New-Object System.Net.Mail.MailMessage
 $emailMessage.From = $EmailFrom
 $emailMessage.To.Add($EmailTo)
